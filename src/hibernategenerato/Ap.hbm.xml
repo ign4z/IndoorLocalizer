@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3-nov-2017 12.16.16 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="Ap" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ap">
+        <id name="mac" type="string">
+            <column name="mac"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="canale" optimistic-lock="true" type="int" unique="false">
+            <column name="canale" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ssid" optimistic-lock="true" type="string" unique="false">
+            <column name="ssid" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

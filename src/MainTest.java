@@ -11,18 +11,14 @@ public class MainTest {
 	private static Logger log= LogManager.getLogger("");
 	
 	public static void main(String[] args) {
-		log.fatal("fatal");
-		log.error("error");
-		log.debug("debug");
-		log.warn("warn");
-		log.trace("trace");
 		
 		AccessPoint a = new AccessPoint();
 		a.setSsid("ssss");
-		
+		a.setMac("ca cac jua");
+		a.setCanale(2);
 		AccessPointDaoHbernate s = new AccessPointDaoHbernate();
-		s.create(a);
-		System.out.println("ap ="+a.getId());
+		String id = s.create(a);
+		System.out.println("ap ="+ id);
 		HibernateUtil.close();
 
 	}

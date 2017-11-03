@@ -15,13 +15,13 @@ public class AccessPointDaoHbernate implements AccessPointDao{
 	
 	
 	@Override
-	public int create(AccessPoint ap) {
+	public String create(AccessPoint ap) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
-		int id=0;
+		String id = null;
 		try {
 			transaction = session.beginTransaction();
-			id= (Integer) session.save(ap);
+			id= (String) session.save(ap);
 			transaction.commit();
 		} catch (HibernateException e) {
 			transaction.rollback();

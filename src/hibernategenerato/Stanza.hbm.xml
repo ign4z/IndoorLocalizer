@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3-nov-2017 12.16.16 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="Stanza" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="stanza">
+        <composite-id class="StanzaId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="nome" type="string">
+                <column name="nome"/>
+            </key-property>
+            <key-property name="edificioNome" type="string">
+                <column name="edificio_nome"/>
+            </key-property>
+        </composite-id>
+        <property generated="never" lazy="false" name="piano" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="piano"/>
+        </property>
+        <property generated="never" lazy="false" name="informazioniId" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="informazioni_id"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3-nov-2017 12.16.16 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="StanzaHasAp" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="stanza_has_ap">
+        <composite-id class="StanzaHasApId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="stanzaNome" type="string">
+                <column name="stanza_nome"/>
+            </key-property>
+            <key-property name="stanzaEdificioNome" type="string">
+                <column name="stanza_edificio_nome"/>
+            </key-property>
+            <key-property name="apMac" type="string">
+                <column name="ap_mac"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

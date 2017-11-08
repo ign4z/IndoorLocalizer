@@ -1,4 +1,4 @@
-package hibernategenerato;
+package it.uni.pwm.indoorlocalizer.model;
 // Generated 8-nov-2017 10.12.07 by Hibernate Tools 5.2.5.Final
 
 import java.util.List;

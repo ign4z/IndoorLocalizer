@@ -1,5 +1,6 @@
+package hibernategenerato;
 // default package
-// Generated 3-nov-2017 12.16.26 by Hibernate Tools 5.2.5.Final
+// Generated 8-nov-2017 10.12.07 by Hibernate Tools 5.2.5.Final
 
 import java.util.List;
 import javax.naming.InitialContext;

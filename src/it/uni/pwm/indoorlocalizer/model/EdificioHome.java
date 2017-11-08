@@ -1,5 +1,6 @@
+package it.uni.pwm.indoorlocalizer.model;
 // default package
-// Generated 3-nov-2017 12.16.26 by Hibernate Tools 5.2.5.Final
+// Generated 8-nov-2017 10.12.07 by Hibernate Tools 5.2.5.Final
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -10,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class StanzaHasAp.
- * @see .StanzaHasAp
+ * Home object for domain model class Edificio.
+ * @see .Edificio
  * @author Hibernate Tools
  */
-public class StanzaHasApHome {
+public class EdificioHome {
 
-	private static final Log log = LogFactory.getLog(StanzaHasApHome.class);
+	private static final Log log = LogFactory.getLog(EdificioHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +30,8 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public void persist(StanzaHasAp transientInstance) {
-		log.debug("persisting StanzaHasAp instance");
+	public void persist(Edificio transientInstance) {
+		log.debug("persisting Edificio instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +41,8 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public void attachDirty(StanzaHasAp instance) {
-		log.debug("attaching dirty StanzaHasAp instance");
+	public void attachDirty(Edificio instance) {
+		log.debug("attaching dirty Edificio instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +52,8 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public void attachClean(StanzaHasAp instance) {
-		log.debug("attaching clean StanzaHasAp instance");
+	public void attachClean(Edificio instance) {
+		log.debug("attaching clean Edificio instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +63,8 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public void delete(StanzaHasAp persistentInstance) {
-		log.debug("deleting StanzaHasAp instance");
+	public void delete(Edificio persistentInstance) {
+		log.debug("deleting Edificio instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +74,10 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public StanzaHasAp merge(StanzaHasAp detachedInstance) {
-		log.debug("merging StanzaHasAp instance");
+	public Edificio merge(Edificio detachedInstance) {
+		log.debug("merging Edificio instance");
 		try {
-			StanzaHasAp result = (StanzaHasAp) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Edificio result = (Edificio) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +86,10 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public StanzaHasAp findById(StanzaHasApId id) {
-		log.debug("getting StanzaHasAp instance with id: " + id);
+	public Edificio findById(EdificioId id) {
+		log.debug("getting Edificio instance with id: " + id);
 		try {
-			StanzaHasAp instance = (StanzaHasAp) sessionFactory.getCurrentSession().get("StanzaHasAp", id);
+			Edificio instance = (Edificio) sessionFactory.getCurrentSession().get("Edificio", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -101,11 +102,11 @@ public class StanzaHasApHome {
 		}
 	}
 
-	public List findByExample(StanzaHasAp instance) {
-		log.debug("finding StanzaHasAp instance by example");
+	public List findByExample(Edificio instance) {
+		log.debug("finding Edificio instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("StanzaHasAp")
-					.add(Example.create(instance)).list();
+			List results = sessionFactory.getCurrentSession().createCriteria("Edificio").add(Example.create(instance))
+					.list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

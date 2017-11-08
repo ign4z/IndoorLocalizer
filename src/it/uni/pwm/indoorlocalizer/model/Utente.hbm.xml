@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 8-nov-2017 11.08.49 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="Utente" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="utente">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="it.uni.pwm.indoorlocalizer.model.Utente" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="utente">
         <id name="id" type="java.lang.Integer">
             <column name="id"/>
             <generator class="identity"/>
@@ -21,6 +21,7 @@
         <property generated="never" lazy="false" name="abilitato" optimistic-lock="true" type="byte" unique="false">
             <column name="abilitato" not-null="true"/>
         </property>
+        <!-- 
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="edificios" optimistic-lock="true" sort="unsorted" table="edificio">
             <key on-delete="noaction">
                 <column name="utente_id" not-null="true"/>
@@ -56,6 +57,6 @@
                 <column name="utente_id" not-null="true"/>
             </key>
             <one-to-many class="Informazioni" embed-xml="true" not-found="exception"/>
-        </set>
+        </set> -->
     </class>
 </hibernate-mapping>

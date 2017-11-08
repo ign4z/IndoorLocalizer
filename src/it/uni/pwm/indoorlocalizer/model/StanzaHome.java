@@ -1,4 +1,4 @@
-package hibernategenerato;
+package it.uni.pwm.indoorlocalizer.model;
 // default package
 // Generated 8-nov-2017 10.12.07 by Hibernate Tools 5.2.5.Final
 
@@ -11,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Edificio.
- * @see .Edificio
+ * Home object for domain model class Stanza.
+ * @see .Stanza
  * @author Hibernate Tools
  */
-public class EdificioHome {
+public class StanzaHome {
 
-	private static final Log log = LogFactory.getLog(EdificioHome.class);
+	private static final Log log = LogFactory.getLog(StanzaHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -30,8 +30,8 @@ public class EdificioHome {
 		}
 	}
 
-	public void persist(Edificio transientInstance) {
-		log.debug("persisting Edificio instance");
+	public void persist(Stanza transientInstance) {
+		log.debug("persisting Stanza instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -41,8 +41,8 @@ public class EdificioHome {
 		}
 	}
 
-	public void attachDirty(Edificio instance) {
-		log.debug("attaching dirty Edificio instance");
+	public void attachDirty(Stanza instance) {
+		log.debug("attaching dirty Stanza instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -52,8 +52,8 @@ public class EdificioHome {
 		}
 	}
 
-	public void attachClean(Edificio instance) {
-		log.debug("attaching clean Edificio instance");
+	public void attachClean(Stanza instance) {
+		log.debug("attaching clean Stanza instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -63,8 +63,8 @@ public class EdificioHome {
 		}
 	}
 
-	public void delete(Edificio persistentInstance) {
-		log.debug("deleting Edificio instance");
+	public void delete(Stanza persistentInstance) {
+		log.debug("deleting Stanza instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -74,10 +74,10 @@ public class EdificioHome {
 		}
 	}
 
-	public Edificio merge(Edificio detachedInstance) {
-		log.debug("merging Edificio instance");
+	public Stanza merge(Stanza detachedInstance) {
+		log.debug("merging Stanza instance");
 		try {
-			Edificio result = (Edificio) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Stanza result = (Stanza) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -86,10 +86,10 @@ public class EdificioHome {
 		}
 	}
 
-	public Edificio findById(EdificioId id) {
-		log.debug("getting Edificio instance with id: " + id);
+	public Stanza findById(StanzaId id) {
+		log.debug("getting Stanza instance with id: " + id);
 		try {
-			Edificio instance = (Edificio) sessionFactory.getCurrentSession().get("Edificio", id);
+			Stanza instance = (Stanza) sessionFactory.getCurrentSession().get("Stanza", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -102,10 +102,10 @@ public class EdificioHome {
 		}
 	}
 
-	public List findByExample(Edificio instance) {
-		log.debug("finding Edificio instance by example");
+	public List findByExample(Stanza instance) {
+		log.debug("finding Stanza instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("Edificio").add(Example.create(instance))
+			List results = sessionFactory.getCurrentSession().createCriteria("Stanza").add(Example.create(instance))
 					.list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;

@@ -1,5 +1,6 @@
+package it.uni.pwm.indoorlocalizer.model;
 // default package
-// Generated 3-nov-2017 12.16.26 by Hibernate Tools 5.2.5.Final
+// Generated 8-nov-2017 10.12.07 by Hibernate Tools 5.2.5.Final
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -10,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class StanzaHasNotifiche.
- * @see .StanzaHasNotifiche
+ * Home object for domain model class Notifiche.
+ * @see .Notifiche
  * @author Hibernate Tools
  */
-public class StanzaHasNotificheHome {
+public class NotificheHome {
 
-	private static final Log log = LogFactory.getLog(StanzaHasNotificheHome.class);
+	private static final Log log = LogFactory.getLog(NotificheHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +30,8 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public void persist(StanzaHasNotifiche transientInstance) {
-		log.debug("persisting StanzaHasNotifiche instance");
+	public void persist(Notifiche transientInstance) {
+		log.debug("persisting Notifiche instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +41,8 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public void attachDirty(StanzaHasNotifiche instance) {
-		log.debug("attaching dirty StanzaHasNotifiche instance");
+	public void attachDirty(Notifiche instance) {
+		log.debug("attaching dirty Notifiche instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +52,8 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public void attachClean(StanzaHasNotifiche instance) {
-		log.debug("attaching clean StanzaHasNotifiche instance");
+	public void attachClean(Notifiche instance) {
+		log.debug("attaching clean Notifiche instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +63,8 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public void delete(StanzaHasNotifiche persistentInstance) {
-		log.debug("deleting StanzaHasNotifiche instance");
+	public void delete(Notifiche persistentInstance) {
+		log.debug("deleting Notifiche instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +74,10 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public StanzaHasNotifiche merge(StanzaHasNotifiche detachedInstance) {
-		log.debug("merging StanzaHasNotifiche instance");
+	public Notifiche merge(Notifiche detachedInstance) {
+		log.debug("merging Notifiche instance");
 		try {
-			StanzaHasNotifiche result = (StanzaHasNotifiche) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Notifiche result = (Notifiche) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,11 +86,10 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public StanzaHasNotifiche findById(StanzaHasNotificheId id) {
-		log.debug("getting StanzaHasNotifiche instance with id: " + id);
+	public Notifiche findById(java.lang.Integer id) {
+		log.debug("getting Notifiche instance with id: " + id);
 		try {
-			StanzaHasNotifiche instance = (StanzaHasNotifiche) sessionFactory.getCurrentSession()
-					.get("StanzaHasNotifiche", id);
+			Notifiche instance = (Notifiche) sessionFactory.getCurrentSession().get("Notifiche", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -102,11 +102,11 @@ public class StanzaHasNotificheHome {
 		}
 	}
 
-	public List findByExample(StanzaHasNotifiche instance) {
-		log.debug("finding StanzaHasNotifiche instance by example");
+	public List findByExample(Notifiche instance) {
+		log.debug("finding Notifiche instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("StanzaHasNotifiche")
-					.add(Example.create(instance)).list();
+			List results = sessionFactory.getCurrentSession().createCriteria("Notifiche").add(Example.create(instance))
+					.list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8-nov-2017 11.08.49 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="it.uni.pwm.indoorlocalizer.model.pojo.Ap" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="ap">
+        <id name="mac" type="string">
+            <column name="mac"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="it.uni.pwm.indoorlocalizer.model.pojo.Utente" embed-xml="true" fetch="select" insert="true" name="utente" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="utente_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="canale" optimistic-lock="true" type="int" unique="false">
+            <column name="canale" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ssid" optimistic-lock="true" type="string" unique="false">
+            <column name="ssid" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="false" lazy="true" mutable="true" name="stanzas" optimistic-lock="true" sort="unsorted" table="ap_has_stanza">
+            <key on-delete="noaction">
+                <column name="ap_mac" not-null="true"/>
+            </key>
+            <many-to-many entity-name="it.uni.pwm.indoorlocalizer.model.pojo.Stanza" not-found="exception" unique="false">
+                <column name="stanza_nome" not-null="true"/>
+                <column name="stanza_edificio_id" not-null="true"/>
+                <column name="stanza_edificio_campus_id" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8-nov-2017 11.08.49 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="it.uni.pwm.indoorlocalizer.model.pojo.Utente" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="utente">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column name="email" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="nome" optimistic-lock="true" type="string" unique="false">
+            <column name="nome" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="cognome" optimistic-lock="true" type="string" unique="false">
+            <column name="cognome" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pwd" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="pwd" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="abilitato" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="abilitato" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="edificios" optimistic-lock="true" sort="unsorted" table="edificio">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Edificio"  not-found="exception"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="aps" optimistic-lock="true" sort="unsorted" table="ap">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Ap" not-found="exception"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="campuses" optimistic-lock="true" sort="unsorted" table="campus">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Campus" not-found="exception"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="stanzas" optimistic-lock="true" sort="unsorted" table="stanza">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Stanza" not-found="exception"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="notifiches" optimistic-lock="true" sort="unsorted" table="notifiche">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Notifiche" not-found="exception"/>
+        </set>
+        <set  fetch="select" inverse="true" lazy="true" mutable="true" name="informazionis" optimistic-lock="true" sort="unsorted" table="informazioni">
+            <key on-delete="noaction">
+                <column name="utente_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Informazioni" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

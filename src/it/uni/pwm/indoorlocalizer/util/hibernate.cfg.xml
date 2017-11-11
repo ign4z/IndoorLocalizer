@@ -12,13 +12,13 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         
-		<!--  <mapping resource="it/uni/pwm/indoorlocalizer/model/Ap.hbm.xml" />
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Campus.hbm.xml" />
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Edificio.hbm.xml" />
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Informazioni.hbm.xml" />
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Notifiche.hbm.xml" />
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Stanza.hbm.xml" /> -->
-		<mapping resource="it/uni/pwm/indoorlocalizer/model/Utente.hbm.xml" />
+	    <mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Ap.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Campus.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Edificio.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Informazioni.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Notifiche.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Stanza.hbm.xml" />
+		<mapping resource="it/uni/pwm/indoorlocalizer/model/pojo/Utente.hbm.xml" />
 		
 	</session-factory>
 </hibernate-configuration>

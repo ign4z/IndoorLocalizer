@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8-nov-2017 11.08.49 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="it.uni.pwm.indoorlocalizer.model.pojo.Informazioni" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="informazioni">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="it.uni.pwm.indoorlocalizer.model.pojo.Utente"  fetch="select" insert="true" name="utente" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="utente_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="dati" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="dati"/>
+        </property>
+    </class>
+</hibernate-mapping>

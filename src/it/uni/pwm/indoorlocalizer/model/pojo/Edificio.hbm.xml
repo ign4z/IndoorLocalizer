@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 8-nov-2017 11.08.49 by Hibernate Tools 5.2.5.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="indoorlocalizer" dynamic-insert="false" dynamic-update="false" mutable="true" name="it.uni.pwm.indoorlocalizer.model.pojo.Edificio" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="edificio">
+        <composite-id class="it.uni.pwm.indoorlocalizer.model.pojo.EdificioId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="id" type="int">
+                <column name="id"/>
+            </key-property>
+            <key-property name="campusId" type="int">
+                <column name="campus_id"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="it.uni.pwm.indoorlocalizer.model.pojo.Campus" fetch="select" insert="false" name="campus" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="campus_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="it.uni.pwm.indoorlocalizer.model.pojo.Utente"  fetch="select" insert="true" name="utente" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="utente_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nome" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="nome" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="stanzas" optimistic-lock="true" sort="unsorted" table="stanza">
+            <key on-delete="noaction">
+                <column name="edificio_id" not-null="true"/>
+                <column name="edificio_campus_id" not-null="true"/>
+            </key>
+            <one-to-many class="it.uni.pwm.indoorlocalizer.model.pojo.Stanza" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

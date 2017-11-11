@@ -3,9 +3,9 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import it.uni.pwm.indoorlocalizer.model.Utente;
-import it.uni.pwm.indoorlocalizer.model.UtenteDao;
-import it.uni.pwm.indoorlocalizer.model.UtenteDaoFactory;
+import it.uni.pwm.indoorlocalizer.model.dao.UtenteDao;
+import it.uni.pwm.indoorlocalizer.model.dao.UtenteDaoFactory;
+import it.uni.pwm.indoorlocalizer.model.pojo.Utente;
 import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 
 public class MainTest {
@@ -17,12 +17,13 @@ public class MainTest {
 		Utente u = new Utente();
 		u.setAbilitato((byte) 1);
 		u.setNome("ciccio");
-		u.setEmail("sspeie@sa.iu");
+		u.setEmail("sspeie@sa.ius");
 		u.setCognome("cicciu");
 		u.setPwd("sss");
 		UtenteDao utenteDao=UtenteDaoFactory.getDAO();
-		utenteDao.create(u);
+	    System.out.println(utenteDao.create(u));
 		HibernateUtil.close();
+
 	}
 
 }

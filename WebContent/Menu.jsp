@@ -15,9 +15,9 @@
 	  -->
 	<hr>
 	<ol>
-		<li><a href="<s:url action='registrazione/Registration'/>">Passaggio dati (metodo base - versione con XML)</a> </li>
-		<!-- <li><a ref="<s:url action='esempio1annot/name-collector'/>">Passaggio	dati (metodo base - versione con Annotations)</a></li>
-		<li><a href="<s:url action='esempio2/Registration'/>">Passaggio	dati (con Javabeans)</a></li>
+		<li><a href="<s:url action='registrazione/Registration'/>">Registrati</a> </li>
+		 <li><a href="<s:url action='registrazione/LoginForm'/>">login</a></li>
+		<!--<li><a href="<s:url action='esempio2/Registration'/>">Passaggio	dati (con Javabeans)</a></li>
 		<li><a href="<s:url action='esempio3/Registration'/>">Passaggio	dati (con ModelDriven)</a></li>
 		<li><a href="<s:url action='esempio4/Registration'/>">Validazione (con Workflow)</a></li>
 		<li><a href="<s:url action='esempio5/Registration'/>">Validazione (con Validation)</a></li>

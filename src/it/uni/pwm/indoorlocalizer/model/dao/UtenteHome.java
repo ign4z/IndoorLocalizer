@@ -4,10 +4,13 @@ package it.uni.pwm.indoorlocalizer.model.dao;
 
 import java.util.List;
 import javax.naming.InitialContext;
+import javax.persistence.NoResultException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,11 +19,7 @@ import org.hibernate.criterion.Example;
 import it.uni.pwm.indoorlocalizer.model.pojo.Utente;
 import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 
-/**
- * Home object for domain model class Utente.
- * @see .Utente
- * @author Hibernate Tools
- */
+
 public class UtenteHome implements UtenteDao {
 
 	private static Logger log= LogManager.getLogger("");
@@ -50,7 +49,7 @@ public class UtenteHome implements UtenteDao {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List<Utente> l = null;
 		try {
-		   l=(List<Utente>) session.createNativeQuery("Select * from Studente").addEntity(Utente.class).list();
+		   l=(List<Utente>) session.createNativeQuery("Select * from utente").addEntity(Utente.class).list();
 		}catch (HibernateException e) {
 			log.error(e);
 		}finally {
@@ -58,6 +57,47 @@ public class UtenteHome implements UtenteDao {
 				session.close();
 		}
 		return l;
+	}
+	
+	@Override
+	public Utente exist(String email) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Utente u = null;
+		try {
+		    Query<Utente> q =  session.createNativeQuery("Select * from utente where email = ?").addEntity(Utente.class);
+		    q.setParameter(1, email);
+		    u= q.getSingleResult();
+		}catch (HibernateException e) {
+			log.error(e);
+		}
+		catch(NoResultException nre){
+			
+		}finally {		
+			if(session!=null)
+				session.close();
+		}
+		return u;
+	}
+	
+	@Override
+	public Utente login(String email,String pwd) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Utente u = null;
+		try {
+		    Query<Utente> q =  session.createNativeQuery("Select * from utente where email = ? and pwd = ?").addEntity(Utente.class);
+		    q.setParameter(1, email);
+		    q.setParameter(2, pwd);
+		    u= q.getSingleResult();
+		}catch (HibernateException e) {
+			log.error(e);
+		}
+		catch(NoResultException nre){
+			
+		}finally {		
+			if(session!=null)
+				session.close();
+		}
+		return u;
 	}
 
 	@Override

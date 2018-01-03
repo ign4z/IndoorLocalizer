@@ -8,5 +8,7 @@ public interface UtenteDao {
 	public java.util.List<Utente> retrive();
 	public boolean update(Utente u );
 	public boolean delete(Utente u);
+	public Utente exist(String email);
+	public Utente login(String email,String pwd);
 
 }

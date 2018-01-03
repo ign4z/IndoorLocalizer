@@ -26,3 +26,4 @@ target/
 
 #eclipse configuration
 .settings/
+/build/

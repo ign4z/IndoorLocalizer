@@ -1,48 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
 
-
 <struts>
+	<constant name="struts.devMode" value="true" />
 
-   <!--
-   			For the purposes of the book, we will leave devMode set to true.  This
-   			allows several things to occur including provision of debugging level information
-   			on error pages as well as reloading of various resources with each request.
-   --> 
-   <constant name="struts.devMode" value="true" />
- 		<!-- 
-			You can define packages directly in this file, but its probably best
-		   	to modularize the configuration files with separate xml files for each
-		   	package.  Ulitmately its all the same because the include element, seen
-		   	below, pulls the included configuration document directly in to the 
-		   	primary document.  The only thing to consider is that a referenced
-		   	element must have been declared above the referring element.         
-		-->
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="Menu">
+			<result>/Menu.jsp</result>
+		</action>
+	</package>
+
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="Login" class="it.uni.pwm.indoorlocalizer.action.login.Login">
+			<result type="redirect">/secure/Authenticated</result>
+			<result name="input">/registrazione/LoginForm.jsp</result>
+		</action>
+		<action name="LoginForm">
+			<result>/registrazione/LoginForm.jsp</result>
+		</action>
+	</package>
+
+	<package name="loggato" namespace="/secure" extends="struts-default">
+		<interceptors>
+			<interceptor name="auth"
+				class="it.uni.pwm.indoorlocalizer.action.login.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="auth" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="secureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/registrazione/LoginForm.jsp
+			</result>
+		</global-results>
+
+		<action name="Authenticated"
+			class="it.uni.pwm.indoorlocalizer.action.login.Authenticated">
+			<interceptor-ref name="auth" />
+			<result name="success">/registrazione/Authenticated.jsp</result>
+		</action>
+
+		 <action name="Authenticated" class="it.uni.pwm.indoorlocalizer.action.login.Authenticated">
+    		<result name="input">/registrazione/LoginForm.jsp</result>
+    		<result name="success">/registrazione/Authenticated.jsp</result>   
+		</action>
 		
-		<!-- 
-				This is the menu action that will allow the reader to see the different
-				samples actions from the different chapters in a menu format.  We declare
-				it here, in the root namespace, because its not really related to any of the
-				specific examples or chapters, its just a kind of utility for the whole 
-				application.
-		-->
-		<package name="default" namespace="/" extends="struts-default"> 
-			<action name="Menu">
-				<result>/Menu.jsp</result>
-			</action>
-		</package>	
+		<action name="LoginForm" class="it.uni.pwm.indoorlocalizer.action.login.Authenticated" method="logOut">
+			<result name="input">/registrazione/LoginForm.jsp</result>
+		</action>
 		
-	 	
- 	<package name="registrazione" namespace="/" extends="struts-default">	 
- 	
- 			<action name="Registration">
-				<result>/registrazione/Registration.jsp</result>
-			</action>
- 	
-			<action name="Register" class="it.uni.pwm.indoorlocalizer.action.Register">
+	</package>
+
+	<package name="registrazione" namespace="/" extends="struts-default">
+		<action name="Registration"
+			class="it.uni.pwm.indoorlocalizer.action.register.Registration">
+			<result>/registrazione/Registration.jsp</result>
+		</action>
+
+		<action name="Register"
+			class="it.uni.pwm.indoorlocalizer.action.register.Register">
 			<result name="success">/registrazione/RegistrationOk.jsp</result>
 			<result name="input">/registrazione/Registration.jsp</result>
 		</action>
-     </package>	
-	
+
+	</package>
+
 </struts>

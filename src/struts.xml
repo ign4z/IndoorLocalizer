@@ -4,12 +4,35 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 
+	<!-- welocome page -->
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="Menu">
 			<result>/Menu.jsp</result>
 		</action>
 	</package>
+	
+	<!-- pagina json -->
+	<package name="json" namespace="/" extends="json-default">
+		<action name="Ricerca">
+			<result>/ricerca/Ricerca.jsp</result>
+		</action>
 
+		<action name="RicercaUtente" class="it.uni.pwm.indoorlocalizer.action.json.RicercaUtente">
+			<result type="json" name="SUCCESS">
+				<param name="excludeProperties">
+					^result\[\d+\].id,
+					^result\[\d+\].edificios,
+					^result\[\d+\].aps,
+					^result\[\d+\].campuses,
+					^result\[\d+\].stanzas,
+					^result\[\d+\].notifiches,
+					^result\[\d+\].informazionis
+				</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- login form -->
 	<package name="login" namespace="/" extends="struts-default">
 		<action name="Login" class="it.uni.pwm.indoorlocalizer.action.login.Login">
 			<result type="redirect">/secure/Authenticated</result>
@@ -20,6 +43,22 @@
 		</action>
 	</package>
 
+	<!-- registrazione -->
+	<package name="registrazione" namespace="/" extends="struts-default">
+		<action name="Registration"
+			class="it.uni.pwm.indoorlocalizer.action.register.Registration">
+			<result>/registrazione/Registration.jsp</result>
+		</action>
+
+		<action name="Register"
+			class="it.uni.pwm.indoorlocalizer.action.register.Register">
+			<result name="success">/registrazione/RegistrationOk.jsp</result>
+			<result name="input">/registrazione/Registration.jsp</result>
+		</action>
+	</package>
+
+	<!-- zona con autenticazione -->
+	<!-- home page 1 -->
 	<package name="loggato" namespace="/secure" extends="struts-default">
 		<interceptors>
 			<interceptor name="auth"
@@ -38,33 +77,17 @@
 
 		<action name="Authenticated"
 			class="it.uni.pwm.indoorlocalizer.action.login.Authenticated">
-			<interceptor-ref name="auth" />
+			<result name="input">/registrazione/LoginForm.jsp</result>
 			<result name="success">/registrazione/Authenticated.jsp</result>
 		</action>
 
-		 <action name="Authenticated" class="it.uni.pwm.indoorlocalizer.action.login.Authenticated">
-    		<result name="input">/registrazione/LoginForm.jsp</result>
-    		<result name="success">/registrazione/Authenticated.jsp</result>   
-		</action>
-		
-		<action name="LoginForm" class="it.uni.pwm.indoorlocalizer.action.login.Authenticated" method="logOut">
+		<action name="LoginForm"
+			class="it.uni.pwm.indoorlocalizer.action.login.Authenticated" method="logOut">
 			<result name="input">/registrazione/LoginForm.jsp</result>
 		</action>
-		
-	</package>
-
-	<package name="registrazione" namespace="/" extends="struts-default">
-		<action name="Registration"
-			class="it.uni.pwm.indoorlocalizer.action.register.Registration">
-			<result>/registrazione/Registration.jsp</result>
-		</action>
-
-		<action name="Register"
-			class="it.uni.pwm.indoorlocalizer.action.register.Register">
-			<result name="success">/registrazione/RegistrationOk.jsp</result>
-			<result name="input">/registrazione/Registration.jsp</result>
-		</action>
 
 	</package>
+
+
 
 </struts>

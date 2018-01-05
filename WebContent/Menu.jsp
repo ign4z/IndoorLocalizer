@@ -17,6 +17,7 @@
 	<ol>
 		<li><a href="<s:url action='registrazione/Registration'/>">Registrati</a> </li>
 		 <li><a href="<s:url action='registrazione/LoginForm'/>">login</a></li>
+		 <li><a href="<s:url action='ricerca/Ricerca'/>">Uso di JSON</a></li>
 		<!--<li><a href="<s:url action='esempio2/Registration'/>">Passaggio	dati (con Javabeans)</a></li>
 		<li><a href="<s:url action='esempio3/Registration'/>">Passaggio	dati (con ModelDriven)</a></li>
 		<li><a href="<s:url action='esempio4/Registration'/>">Validazione (con Workflow)</a></li>

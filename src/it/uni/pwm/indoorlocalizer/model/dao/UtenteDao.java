@@ -10,5 +10,6 @@ public interface UtenteDao {
 	public boolean delete(Utente u);
 	public Utente exist(String email);
 	public Utente login(String email,String pwd);
+	public Utente retriveFromId(int id);
 
 }

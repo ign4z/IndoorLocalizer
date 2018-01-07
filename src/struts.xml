@@ -3,7 +3,15 @@
 
 <struts>
 	<constant name="struts.devMode" value="true" />
-
+	
+	<!-- qualsiasi azione non mappata mi rimanda alla pagina 404 -->
+	<!--  disattivata per debug 
+	<package name="serveAll" namespace="" extends="struts-default">
+        <action name="*">
+            <result>/error/Error404.jsp</result>
+        </action>
+</package>
+	-->
 	<!-- welocome page -->
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="Menu">
@@ -11,49 +19,45 @@
 		</action>
 	</package>
 	
-	<!-- pagina json -->
-	<package name="json" namespace="/" extends="json-default">
-		<action name="Ricerca">
-			<result>/ricerca/Ricerca.jsp</result>
-		</action>
-
-		<action name="RicercaUtente" class="it.uni.pwm.indoorlocalizer.action.json.RicercaUtente">
-			<result type="json" name="SUCCESS">
-				<param name="excludeProperties">
-					^result\[\d+\].id,
-					^result\[\d+\].edificios,
-					^result\[\d+\].aps,
-					^result\[\d+\].campuses,
-					^result\[\d+\].stanzas,
-					^result\[\d+\].notifiches,
-					^result\[\d+\].informazionis
-				</param>
-			</result>
-		</action>
-	</package>
-
+	<!-- pagina json --> 
+	<include file="it/uni/pwm/indoorlocalizer/action/json/struts-json.xml"/>
+	
 	<!-- login form -->
 	<package name="login" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="genericException">/error/ExeptionHandler.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="genericException" />
+		</global-exception-mappings>
 		<action name="Login" class="it.uni.pwm.indoorlocalizer.action.login.Login">
 			<result type="redirect">/secure/Authenticated</result>
-			<result name="input">/registrazione/LoginForm.jsp</result>
+			<result name="input">/WEB-INF/registrazione/LoginForm.jsp</result>
 		</action>
 		<action name="LoginForm">
-			<result>/registrazione/LoginForm.jsp</result>
+			<result>/WEB-INF/registrazione/LoginForm.jsp</result>
 		</action>
 	</package>
 
 	<!-- registrazione -->
 	<package name="registrazione" namespace="/" extends="struts-default">
+	<global-results>
+			<result name="genericException">/error/ExeptionHandler.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="genericException" />
+		</global-exception-mappings>
 		<action name="Registration"
 			class="it.uni.pwm.indoorlocalizer.action.register.Registration">
-			<result>/registrazione/Registration.jsp</result>
+			<result>/WEB-INF/registrazione/Registration.jsp</result>
 		</action>
 
 		<action name="Register"
 			class="it.uni.pwm.indoorlocalizer.action.register.Register">
-			<result name="success">/registrazione/RegistrationOk.jsp</result>
-			<result name="input">/registrazione/Registration.jsp</result>
+			<result name="success">/WEB-INF/registrazione/RegistrationOk.jsp</result>
+			<result name="input">/WEB-INF/registrazione/Registration.jsp</result>
 		</action>
 	</package>
 
@@ -61,8 +65,7 @@
 	<!-- home page 1 -->
 	<package name="loggato" namespace="/secure" extends="struts-default">
 		<interceptors>
-			<interceptor name="auth"
-				class="it.uni.pwm.indoorlocalizer.action.login.AuthenticationInterceptor" />
+			<interceptor name="auth" class="it.uni.pwm.indoorlocalizer.action.login.AuthenticationInterceptor" />
 			<interceptor-stack name="secureStack">
 				<interceptor-ref name="auth" />
 				<interceptor-ref name="defaultStack" />
@@ -71,19 +74,23 @@
 		<default-interceptor-ref name="secureStack" />
 
 		<global-results>
-			<result name="login" type="redirect">/registrazione/LoginForm.jsp
-			</result>
+			<result name="login" type="redirect">/registrazione/LoginForm.jsp</result>
+			<result name="genericException">/error/ExeptionHandler.jsp</result>
 		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="genericException" />
+		</global-exception-mappings>
 
 		<action name="Authenticated"
 			class="it.uni.pwm.indoorlocalizer.action.login.Authenticated">
-			<result name="input">/registrazione/LoginForm.jsp</result>
-			<result name="success">/registrazione/Authenticated.jsp</result>
+			<result name="input">/WEB-INF/registrazione/LoginForm.jsp</result>
+			<result name="success">/WEB-INF/registrazione/Authenticated.jsp</result>
 		</action>
 
 		<action name="LoginForm"
 			class="it.uni.pwm.indoorlocalizer.action.login.Authenticated" method="logOut">
-			<result name="input">/registrazione/LoginForm.jsp</result>
+			<result name="input">/WEB-INF/registrazione/LoginForm.jsp</result>
 		</action>
 
 	</package>

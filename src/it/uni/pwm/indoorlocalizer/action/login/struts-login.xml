@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+<!-- login form -->
+	<package name="login" namespace="/" extends="struts-default">
+	
+		
+		
+		<interceptors>
+			<interceptor name="auth" class="it.uni.pwm.indoorlocalizer.interceptors.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="auth" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+	
+	<!-- mapping delle eccezioni 
+		<global-results>
+			<result name="genericException">/error/ExeptionHandler.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="genericException" />
+		</global-exception-mappings>
+		-->
+		<action name="Login" class="it.uni.pwm.indoorlocalizer.action.login.Login">
+			<result type="redirect">/secure/Authenticated</result>
+			<result name="input">/WEB-INF/login/LoginForm.jsp</result>
+		</action>
+		
+		<action name="LoginForm" class="it.uni.pwm.indoorlocalizer.action.login.LoginForm">
+			<interceptor-ref name="secureStack"></interceptor-ref>
+			<result name="login">/WEB-INF/login/LoginForm.jsp</result>
+			<result type="redirect">/secure/Authenticated</result>
+		</action>
+		
+	</package>
+
+</struts>

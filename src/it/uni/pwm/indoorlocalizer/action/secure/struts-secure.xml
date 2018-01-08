@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+<!-- zona con autenticazione -->
+	<!-- home page 1 -->
+	<package name="loggato" namespace="/secure" extends="struts-default">
+		<interceptors>
+			<interceptor name="auth" class="it.uni.pwm.indoorlocalizer.interceptors.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="auth" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="secureStack" />
+<!-- 
+		<global-results>
+			<result name="genericException">/error/ExeptionHandler.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="genericException" />
+		</global-exception-mappings>
+-->
+		<action name="Authenticated"
+			class="it.uni.pwm.indoorlocalizer.action.secure.Authenticated">
+			<result name="login" type="redirect">/LoginForm</result>
+			<result name="success">/WEB-INF/secure/Authenticated.jsp</result>
+		</action>
+
+		<action name="LogOut"
+			class="it.uni.pwm.indoorlocalizer.action.secure.Authenticated" method="logOut">
+			<result name="login" type="redirect">/LoginForm</result>
+		</action>
+
+	</package>
+
+</struts>

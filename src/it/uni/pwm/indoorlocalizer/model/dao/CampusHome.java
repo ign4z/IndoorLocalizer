@@ -23,7 +23,7 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
  */
 public class CampusHome implements CampusDao {
 
-private static Logger log= LogManager.getLogger("");
+private static Logger log= LogManager.getLogger();
 	
 	@Override
 	public int create(Campus c) {

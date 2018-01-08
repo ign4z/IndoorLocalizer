@@ -1,4 +1,4 @@
-package it.uni.pwm.indoorlocalizer.action.login;
+package it.uni.pwm.indoorlocalizer.interceptors;
 
 import it.uni.pwm.indoorlocalizer.model.pojo.Utente;
 

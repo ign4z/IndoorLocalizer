@@ -23,11 +23,12 @@
 	        <error-code>404</error-code>
 	        <location>/error/Error404.jsp</location>
 	</error-page>
+	<!-- debug attivo -->
 	<error-page>
 	        <error-code>500</error-code>
 	        <location>/error/ExceptionHandler.jsp</location>
 	</error-page>
-	
+	 
     
 	<!-- Restricts access to pure JSP files - access available only via Struts action -->
 	<!-- Ritorno 403 sulle pagine jsp -->

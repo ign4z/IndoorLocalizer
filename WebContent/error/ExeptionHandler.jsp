@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-500 eccezione
+
+<hr>
+	    <h3>500 Eccezione</h3>  
+	    <p>Si è verificata un'eccezione: <s:property value="exception" />
+	    </p>
+	    <p>Dettagli: <s:property value="exceptionStack" />
+	    </p>
+      <hr>
 </body>
 </html>

@@ -25,7 +25,7 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 public class EdificioHome implements EdificioDao {
 	
 
-private static Logger log= LogManager.getLogger("");
+private static Logger log= LogManager.getLogger();
 	
 	@Override
 	public int create(Edificio e) {

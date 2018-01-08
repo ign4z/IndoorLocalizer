@@ -1,5 +1,8 @@
 package it.uni.pwm.indoorlocalizer.action.register;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import it.uni.pwm.indoorlocalizer.model.dao.UtenteDaoFactory;
@@ -8,13 +11,14 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 
 public class Register extends ActionSupport {
 
+		private static Logger log= LogManager.getLogger();
 		private static final long serialVersionUID = 1L;
 		private Utente utente;
 			
 		public String execute(){
 			
 			if(UtenteDaoFactory.getDAO().exist(utente.getEmail())!=null) {
-				System.out.println("email esiste");
+				log.debug("email esiste");
 				addFieldError("utente.email", "email esistente");
 				return INPUT;
 			}

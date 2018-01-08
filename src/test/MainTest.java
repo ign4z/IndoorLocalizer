@@ -10,7 +10,7 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 
 
 public class MainTest {
-	private static Logger log= LogManager.getLogger("");
+	private static Logger log= LogManager.getLogger();
 	
 	public static void main(String[] args) {
 	

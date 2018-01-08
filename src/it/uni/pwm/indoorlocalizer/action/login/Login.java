@@ -1,6 +1,9 @@
 package it.uni.pwm.indoorlocalizer.action.login;
 
 import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -10,6 +13,7 @@ import it.uni.pwm.indoorlocalizer.util.Costanti;
 
 public class Login extends ActionSupport implements SessionAware {
 
+	private static Logger log= LogManager.getLogger();
 	private static final long serialVersionUID = 1L;
 	private Map<String, Object> session;
 
@@ -33,10 +37,15 @@ public class Login extends ActionSupport implements SessionAware {
 	}
 
 	public String execute() {
-		System.out.println("execute");
+		log.debug("debug execute login");
+		log.trace("trace execute login");
+		log.info("info execute login");
+		log.warn("warn execute login");
+		log.error("error execute login");
+		log.fatal("fatal execute login");
 
 		if (getEmail().isEmpty() || getPwd().isEmpty()) {
-			System.out.println("controlla i campi");
+			log.debug("controlla i campi");
 			addActionError("errore campi");
 			return INPUT;
 		} else {
@@ -47,7 +56,7 @@ public class Login extends ActionSupport implements SessionAware {
 			}
 
 			session.put(Costanti.SESSIONE_UTENTE, utente);
-			System.out.println("sessione inserita");
+			log.debug("sessione inserita");
 			return SUCCESS;
 		}
 

@@ -8,7 +8,8 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-	private static Logger logger = LogManager.getLogger(HibernateUtil.class);
+	
+	private static Logger log= LogManager.getLogger();
     private static final SessionFactory sessionFactory = buildSessionFactory();
     
     private static SessionFactory buildSessionFactory() {
@@ -22,7 +23,7 @@ public class HibernateUtil {
 //          return metadata.getSessionFactoryBuilder().build();
         } 
         catch (Throwable ex) {
-			logger.error(ex);
+			log.error(ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

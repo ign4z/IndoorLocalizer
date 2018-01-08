@@ -22,7 +22,7 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
  */
 public class InformazioniHome implements InformazioniDao{
 
-private static Logger log= LogManager.getLogger("");
+private static Logger log= LogManager.getLogger();
 	
 	@Override
 	public int create(Informazioni i) {

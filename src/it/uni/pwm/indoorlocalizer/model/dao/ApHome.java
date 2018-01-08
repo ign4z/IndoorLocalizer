@@ -19,7 +19,7 @@ import it.uni.pwm.indoorlocalizer.util.HibernateUtil;
 
 public class ApHome implements ApDao {
 
-	private static Logger log= LogManager.getLogger("");
+	private static Logger log= LogManager.getLogger();
 	
 	@Override
 	public int create(Ap ap) {

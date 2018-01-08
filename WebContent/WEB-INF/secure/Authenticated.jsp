@@ -13,7 +13,7 @@
 		Benvenuto <s:property value="utente.nome" />
 	</p>
 	<p>Questa pagina è visibile solo se è stato effettuato il login.</p>
-	<a href="<s:url action='registrazione/LoginForm'/>">esci</a>
+	<a href="<s:url action='LogOut'/>">esci</a>
 
 	<hr>
 </body>

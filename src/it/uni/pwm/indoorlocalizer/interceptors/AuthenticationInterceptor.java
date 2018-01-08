@@ -1,4 +1,4 @@
-package it.uni.pwm.indoorlocalizer.action.login;
+package it.uni.pwm.indoorlocalizer.interceptors;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public class AuthenticationInterceptor implements Interceptor {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger logger = LogManager.getLogger("Interceptor");
+	private static final Logger log = LogManager.getLogger("Interceptor");
 
 	public void destroy() {
 	}
@@ -26,7 +26,7 @@ public class AuthenticationInterceptor implements Interceptor {
 
 	public String intercept( ActionInvocation actionInvocation ) throws Exception {
 		Map<String, Object> session = actionInvocation.getInvocationContext().getSession();
-		System.out.println("interception chiamato");
+		log.debug("interception chiamato");
 		
 		Utente utente = (Utente) session.get( Costanti.SESSIONE_UTENTE );
 		
@@ -39,7 +39,7 @@ public class AuthenticationInterceptor implements Interceptor {
 		    
 		    if (action instanceof UtenteAware) {
 		        ((UtenteAware)action).setUtente(utente);
-		        logger.debug("utente inserito in sessione");
+		        log.debug("utente inserito in sessione");
 		    }
 		    return actionInvocation.invoke();
 		}
